@@ -1,0 +1,218 @@
+/* Material You (M3) design tokens for UnknownLauncher (fork of Hydra).
+ * Static dark defaults are overridden at runtime by helpers/material-you.ts
+ * which derives the full tonal scheme from a seed color.
+ * DB and business logic are untouched — this file only defines CSS vars. */
+
+:root,
+:root[data-m3-mode="dark"] {
+  color-scheme: dark;
+
+  /* Primary (seed-derived at runtime, teal default) */
+  --m3-seed: #16b195;
+  --m3-primary: #5dd8be;
+  --m3-on-primary: #00382e;
+  --m3-primary-container: #005045;
+  --m3-on-primary-container: #6ff7dc;
+
+  /* Secondary / tertiary */
+  --m3-secondary: #b1ccc3;
+  --m3-on-secondary: #1c3530;
+  --m3-secondary-container: #334b46;
+  --m3-on-secondary-container: #cde9e0;
+  --m3-tertiary: #b4c7e5;
+  --m3-on-tertiary: #1f314b;
+  --m3-tertiary-container: #354863;
+  --m3-on-tertiary-container: #d3e4ff;
+
+  /* Status */
+  --m3-error: #ffb4ab;
+  --m3-on-error: #690005;
+  --m3-error-container: #93000a;
+  --m3-on-error-container: #ffdad6;
+  --m3-success: #6fdc8c;
+  --m3-on-success: #00390f;
+  --m3-success-container: #00531a;
+  --m3-on-success-container: #8df5a6;
+  --m3-warning: #ffcf4d;
+  --m3-on-warning: #3a2d00;
+
+  /* Surfaces (M3 dark, slight green tint from seed) */
+  --m3-surface-dim: #101413;
+  --m3-surface: #131615;
+  --m3-surface-bright: #3a3f3d;
+  --m3-surface-container-lowest: #0c0f0e;
+  --m3-surface-container-low: #1a1d1c;
+  --m3-surface-container: #1e2120;
+  --m3-surface-container-high: #282b2a;
+  --m3-surface-container-highest: #333635;
+  --m3-on-surface: #dde4e1;
+  --m3-on-surface-variant: #bec9c4;
+  --m3-surface-variant: #3f4946;
+  --m3-on-surface-variant-2: #8a938f;
+  --m3-inverse-surface: #dde4e1;
+  --m3-inverse-on-surface: #2b3230;
+  --m3-inverse-primary: #006a5d;
+  --m3-surface-tint: var(--m3-primary);
+  --m3-scrim: #000000;
+  --m3-shadow: #000000;
+
+  /* Outline */
+  --m3-outline: #8a938f;
+  --m3-outline-variant: #3a4340;
+
+  /* Shape (M3) */
+  --m3-shape-xs: 4px;
+  --m3-shape-sm: 8px;
+  --m3-shape-md: 12px;
+  --m3-shape-lg: 16px;
+  --m3-shape-xl: 28px;
+  --m3-shape-full: 999px;
+
+  /* Elevation (M3) */
+  --m3-elevation-0: none;
+  --m3-elevation-1:
+    0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --m3-elevation-2:
+    0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --m3-elevation-3:
+    0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --m3-elevation-4:
+    0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.3);
+  --m3-elevation-5:
+    0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.3);
+
+  /* State layers */
+  --m3-state-hover: 0.08;
+  --m3-state-focus: 0.12;
+  --m3-state-pressed: 0.12;
+  --m3-state-dragged: 0.16;
+
+  /* Motion (M3 expressive-ish) */
+  --m3-motion-short: 200ms cubic-bezier(0.33, 1, 0.68, 1);
+  --m3-motion-medium: 350ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  --m3-motion-long: 500ms cubic-bezier(0.05, 0.7, 0.1, 1);
+
+  /* Typography (keeps Hydra fonts: Noto Sans + Space Grotesk) */
+  --m3-font-body: "Noto Sans", system-ui, sans-serif;
+  --m3-font-display: "Space Grotesk", "Noto Sans", system-ui, sans-serif;
+}
+
+:root[data-m3-mode="light"] {
+  color-scheme: light;
+
+  --m3-primary: #006a5d;
+  --m3-on-primary: #ffffff;
+  --m3-primary-container: #6ff7dc;
+  --m3-on-primary-container: #00201b;
+  --m3-secondary: #4c635d;
+  --m3-on-secondary: #ffffff;
+  --m3-secondary-container: #cde9e0;
+  --m3-on-secondary-container: #07201c;
+  --m3-tertiary: #446179;
+  --m3-on-tertiary: #ffffff;
+  --m3-tertiary-container: #c9e4ff;
+  --m3-on-tertiary-container: #082e4a;
+  --m3-error: #ba1a1a;
+  --m3-on-error: #ffffff;
+  --m3-error-container: #ffdad6;
+  --m3-on-error-container: #410002;
+  --m3-success: #1c9749;
+  --m3-on-success: #ffffff;
+  --m3-success-container: #aef2c0;
+  --m3-on-success-container: #00210a;
+  --m3-warning: #7a5900;
+  --m3-on-warning: #ffffff;
+
+  --m3-surface-dim: #d8dbd9;
+  --m3-surface: #f7faf8;
+  --m3-surface-bright: #f7faf8;
+  --m3-surface-container-lowest: #ffffff;
+  --m3-surface-container-low: #f0f3f1;
+  --m3-surface-container: #eaedeb;
+  --m3-surface-container-high: #e4e7e5;
+  --m3-surface-container-highest: #dee3e0;
+  --m3-on-surface: #191c1b;
+  --m3-on-surface-variant: #3f4946;
+  --m3-surface-variant: #dce5e1;
+  --m3-on-surface-variant-2: #6f7976;
+  --m3-inverse-surface: #2f3231;
+  --m3-inverse-on-surface: #eff1ef;
+  --m3-inverse-primary: #4cd8b9;
+  --m3-scrim: #000000;
+  --m3-shadow: #000000;
+  --m3-outline: #6f7976;
+  --m3-outline-variant: #bec9c4;
+}
+
+/* Base M3 application treatment */
+body {
+  background-color: var(--m3-surface-container-lowest);
+  font-family: var(--m3-font-body);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--m3-primary) 30%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--m3-primary);
+  outline-offset: 2px;
+  border-radius: var(--m3-shape-xs);
+}
+
+/* M3 scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in srgb,
+    var(--m3-on-surface-variant) 40%,
+    transparent
+  );
+  border-radius: var(--m3-shape-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--m3-on-surface-variant) 60%,
+    transparent
+  );
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Shared M3 helpers */
+.m3-card {
+  background: var(--m3-surface-container-low);
+  color: var(--m3-on-surface);
+  border: 1px solid var(--m3-outline-variant);
+  border-radius: var(--m3-shape-lg);
+  box-shadow: var(--m3-elevation-1);
+}
+
+.m3-card--high {
+  background: var(--m3-surface-container);
+}
+
+.m3-card--highest {
+  background: var(--m3-surface-container-high);
+}
+
+.m3-pill {
+  border-radius: var(--m3-shape-full);
+}
+
+.m3-elevated {
+  box-shadow: var(--m3-elevation-2);
+}

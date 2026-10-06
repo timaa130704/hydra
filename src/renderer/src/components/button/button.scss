@@ -2,16 +2,24 @@
 
 .button {
   padding: globals.$spacing-unit globals.$spacing-unit * 2;
-  background-color: globals.$muted-color;
-  border-radius: 8px;
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border-radius: var(--m3-shape-full);
   border: solid 1px transparent;
-  transition: all ease 0.2s;
+  transition: all var(--m3-motion-short);
   cursor: pointer;
   min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: globals.$spacing-unit;
+  font-weight: 600;
+  box-shadow: var(--m3-elevation-0);
+
+  &:hover:not(:disabled) {
+    box-shadow: var(--m3-elevation-1);
+    filter: brightness(1.06);
+  }
 
   &:active {
     opacity: globals.$active-opacity;
@@ -23,22 +31,30 @@
   }
 
   &--primary {
+    background-color: var(--m3-primary);
+    color: var(--m3-on-primary);
+
     &:hover {
-      background-color: #dadbe1;
+      background-color: var(--m3-primary);
     }
 
     &:disabled {
-      background-color: globals.$muted-color;
+      background-color: var(--m3-surface-variant);
+      color: var(--m3-on-surface-variant);
     }
   }
 
   &--outline {
     background-color: transparent;
-    border: solid 1px globals.$border-color;
-    color: globals.$muted-color;
+    border: solid 1px var(--m3-outline);
+    color: var(--m3-primary);
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: color-mix(
+        in srgb,
+        var(--m3-primary) 8%,
+        transparent
+      );
     }
 
     &:disabled {
@@ -47,8 +63,8 @@
   }
 
   &--dark {
-    background-color: globals.$dark-background-color;
-    color: globals.$muted-color;
+    background-color: var(--m3-surface-container-high);
+    color: var(--m3-on-surface);
   }
 
   &--cloud {
@@ -67,11 +83,11 @@
 
   &--danger {
     border-color: transparent;
-    background-color: globals.$danger-color;
-    color: globals.$muted-color;
+    background-color: var(--m3-error-container);
+    color: var(--m3-on-error-container);
 
     &:hover {
-      background-color: #b3203f;
+      filter: brightness(1.08);
     }
   }
 }

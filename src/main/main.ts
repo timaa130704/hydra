@@ -30,6 +30,8 @@ import {
   groupedSouvenirWorker,
 } from "@main/services";
 import { migrateDownloadSources } from "./helpers/migrate-download-sources";
+import { seedDefaultDownloadSources } from "./helpers/seed-default-download-sources";
+import { levelDatabasePath } from "./constants";
 import { getDirSize } from "./services/download/helpers";
 import { GofileApi } from "./services/hosters";
 import { clearLegacyAchievementPersistence } from "./level/clear-legacy-achievements";
@@ -60,7 +62,71 @@ const hasMissingSeedFiles = async (download: Download): Promise<boolean> => {
   return currentSize < expectedSize;
 };
 
+const legacyHydraUserDataCandidates = (): string[] => {
+  const home = SystemPath.getPath("home");
+  const appData =
+    process.platform === "win32"
+      ? process.env.APPDATA ?? ""
+      : process.platform === "darwin"
+        ? path.join(home, "Library", "Application Support")
+        : process.env.XDG_CONFIG_HOME ?? path.join(home, ".config");
+
+  if (!appData) return [];
+  return ["hydra", "Hydra", "hydralauncher"].map((name) =>
+    path.join(appData, name)
+  );
+};
+
+/**
+ * Keeps the same database after the rename to UnknownLauncher:
+ * the DB folder name stays `hydra-db`; on first run the data is copied
+ * once from the legacy Hydra userData folder if present.
+ * No schema change — sublevels are untouched.
+ */
+const migrateLegacyHydraDb = async () => {
+  try {
+    const currentUserData = SystemPath.getPath("userData");
+    if (!currentUserData) return;
+
+    for (const suffix of ["hydra-db", "hydra-db-staging"]) {
+      const currentDb = path.join(currentUserData, suffix);
+      if (fs.existsSync(currentDb)) continue;
+
+      for (const legacyUserData of legacyHydraUserDataCandidates()) {
+        if (
+          path.resolve(legacyUserData) === path.resolve(currentUserData) ||
+          path.resolve(path.join(legacyUserData, suffix)) ===
+            path.resolve(levelDatabasePath)
+        )
+          continue;
+
+        const legacyDb = path.join(legacyUserData, suffix);
+        try {
+          if (!fs.existsSync(legacyDb)) continue;
+          const stat = fs.statSync(legacyDb);
+          if (!stat.isDirectory()) continue;
+
+          fs.mkdirSync(path.dirname(currentDb), { recursive: true });
+          fs.cpSync(legacyDb, currentDb, { recursive: true });
+          logger.log(
+            `[Startup] Migrated legacy Hydra database from ${legacyDb} to ${currentDb}`
+          );
+          break;
+        } catch (error) {
+          logger.error(
+            `[Startup] Failed to migrate legacy Hydra database from ${legacyDb}`,
+            error
+          );
+        }
+      }
+    }
+  } catch (error) {
+    logger.error("[Startup] Failed to check legacy Hydra database", error);
+  }
+};
+
 export const loadState = async () => {
+  await migrateLegacyHydraDb();
   await Lock.acquireLock();
   await clearLegacyAchievementPersistence();
   await migrateCloudSaveAutomaticSyncDefaults();
@@ -117,6 +183,7 @@ export const loadState = async () => {
   await HydraApi.setupApi().then(async () => {
     uploadGamesBatch();
     void migrateDownloadSources();
+    void seedDefaultDownloadSources();
 
     const { syncDownloadSourcesFromApi } = await import("./services/user");
     void syncDownloadSourcesFromApi();

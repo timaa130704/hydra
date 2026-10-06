@@ -1,5 +1,5 @@
-appId: gg.hydralauncher.hydra
-productName: Hydra
+appId: gg.unknownlauncher.unknownlauncher
+productName: UnknownLauncher
 directories:
   buildResources: build
 extraResources:
@@ -25,7 +25,7 @@ asarUnpack:
   - node_modules/sharp/**
   - node_modules/@img/sharp-libvips-*/**
 win:
-  executableName: Hydra
+  executableName: UnknownLauncher
   extraResources:
     - from: binaries/7z.exe
     - from: binaries/7z.dll
@@ -73,7 +73,7 @@ appImage:
 npmRebuild: false
 publish:
   provider: github
-  owner: hydralauncher
+  owner: timaa130704
   repo: hydra
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/

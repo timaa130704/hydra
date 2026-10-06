@@ -56,6 +56,7 @@ import {
   injectCustomCss,
   removeCustomCss,
 } from "./helpers";
+import { initMaterialYou } from "./helpers/material-you";
 import { levelDBService } from "./services/leveldb.service";
 
 export interface AppProps {
@@ -576,6 +577,10 @@ export function App() {
   }, [loadAndApplyTheme]);
 
   useEffect(() => {
+    return initMaterialYou();
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = window.electron.onCustomThemeUpdated(() => {
       loadAndApplyTheme();
     });
@@ -660,7 +665,7 @@ export function App() {
           }`}
         >
           <h4>
-            Hydra
+            UnknownLauncher
             {hasActiveSubscription && (
               <span className="title-bar__cloud-text"> Cloud</span>
             )}

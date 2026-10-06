@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import "./settings-appearance.scss";
 import { ThemeActions, ThemeCard, ThemePlaceholder } from "./index";
+import { MaterialYouThemePicker } from "@renderer/components";
 import type { Theme } from "@types";
 import { ImportThemeModal } from "./modals/import-theme-modal";
 import { settingsContext } from "@renderer/context";
@@ -83,6 +84,7 @@ export function SettingsAppearance({
 
   return (
     <div className="settings-appearance">
+      <MaterialYouThemePicker />
       <ThemeActions onListUpdated={loadThemes} themesCount={themes.length} />
 
       <div className="settings-appearance__themes">

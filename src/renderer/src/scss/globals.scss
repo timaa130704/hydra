@@ -1,17 +1,28 @@
-$background-color: #121212;
-$dark-background-color: #0d0d0d;
+$background-color: var(--m3-surface, #121212);
+$dark-background-color: var(--m3-surface-container-lowest, #0d0d0d);
 
-$muted-color: #f0f1f7;
-$body-color: #d0d1d7;
+$muted-color: var(--m3-on-surface, #f0f1f7);
+$body-color: var(--m3-on-surface-variant, #d0d1d7);
 
-$border-color: rgba(255, 255, 255, 0.08);
-$success-color: #1c9749;
-$danger-color: #801d1e;
-$error-color: #e11d48;
-$warning-color: #ffc107;
+$border-color: var(--m3-outline-variant, rgba(255, 255, 255, 0.08));
+$success-color: var(--m3-success, #1c9749);
+$danger-color: var(--m3-error-container, #801d1e);
+$error-color: var(--m3-error, #e11d48);
+$warning-color: var(--m3-warning, #ffc107);
 
-$brand-teal: #16b195;
+$brand-teal: var(--m3-seed, #16b195);
 $brand-blue: #3e62c0;
+
+/* Material You shape / elevation shortcuts (mirror CSS vars) */
+$m3-shape-xs: var(--m3-shape-xs, 4px);
+$m3-shape-sm: var(--m3-shape-sm, 8px);
+$m3-shape-md: var(--m3-shape-md, 12px);
+$m3-shape-lg: var(--m3-shape-lg, 16px);
+$m3-shape-xl: var(--m3-shape-xl, 28px);
+$m3-shape-full: var(--m3-shape-full, 999px);
+$m3-elevation-1: var(--m3-elevation-1);
+$m3-elevation-2: var(--m3-elevation-2);
+$m3-elevation-3: var(--m3-elevation-3);
 
 $classics-rainbow: conic-gradient(
   from 0deg,

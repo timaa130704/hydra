@@ -3,13 +3,14 @@
 .modal {
   animation: scale-fade-in 0.2s cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none
     running;
-  background-color: globals.$background-color;
-  border-radius: 4px;
+  background-color: var(--m3-surface-container-high);
+  border-radius: var(--m3-shape-xl);
   min-width: 400px;
   max-width: 600px;
-  color: globals.$body-color;
+  color: var(--m3-on-surface);
   max-height: 100%;
-  border: solid 1px globals.$border-color;
+  border: solid 1px var(--m3-outline-variant);
+  box-shadow: var(--m3-elevation-3);
   overflow: hidden;
   display: flex;
   flex-direction: column;

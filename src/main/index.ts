@@ -48,7 +48,7 @@ const { autoUpdater } = updater;
 
 autoUpdater.setFeedURL({
   provider: "github",
-  owner: "hydralauncher",
+  owner: "timaa130704",
   repo: "hydra",
 });
 
@@ -100,7 +100,7 @@ if (process.defaultApp) {
 
 const initializeApp = async () => {
   refreshPortableShortcutLauncher();
-  electronApp.setAppUserModelId("gg.hydralauncher.hydra");
+  electronApp.setAppUserModelId("gg.unknownlauncher.unknownlauncher");
 
   logger.info("Crash dumps directory", app.getPath("crashDumps"));
 

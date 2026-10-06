@@ -2,10 +2,14 @@
 
 [<img src="https://raw.githubusercontent.com/hydralauncher/hydra/refs/heads/main/resources/icon.png" width="144"/>](https://help.hydralauncher.gg)
 
-  <h1 align="center">Hydra Launcher</h1>
+  <h1 align="center">UnknownLauncher</h1>
 
   <p align="center">
-    <strong>Hydra Launcher is an open-source gaming platform created to be the single tool that you need in order to manage your gaming library. Hydra is written in Node.js (Electron, React, Typescript) and Rust, with libtorrent providing the torrent engine.</strong>
+    <strong>UnknownLauncher is a fork of <a href="https://github.com/hydralauncher/hydra">Hydra Launcher</a> with a Material You interface. Same features, same LevelDB database (`hydra-db`, migrated automatically on first run), new Material You dynamic-color theme.</strong>
+  </p>
+
+  <p align="center">
+    Bundled download sources: SteamRip, FitGirl, OnlineFix, Xatab, SteamGG, Rutracker — pick a source when downloading a game.
   </p>
 
 [![build](https://img.shields.io/github/actions/workflow/status/hydralauncher/hydra/build.yml)](https://github.com/hydralauncher/hydra/actions)

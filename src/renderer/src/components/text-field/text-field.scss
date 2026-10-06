@@ -8,18 +8,19 @@
 
   &__text-field {
     display: inline-flex;
-    transition: all ease 0.2s;
+    transition: all var(--m3-motion-short);
     width: 100%;
     align-items: center;
-    border-radius: 8px;
-    border: solid 1px globals.$border-color;
-    height: 40px;
-    min-height: 40px;
+    border-radius: var(--m3-shape-md);
+    border: solid 1px var(--m3-outline-variant);
+    background-color: var(--m3-surface-container-highest);
+    height: 48px;
+    min-height: 48px;
     flex: 1;
     min-width: 0;
 
     &:hover {
-      border-color: rgba(255, 255, 255, 0.5);
+      border-color: var(--m3-outline);
     }
 
     &--primary {
@@ -35,7 +36,8 @@
     }
 
     &--focused {
-      border-color: #dadbe1;
+      border-color: var(--m3-primary);
+      box-shadow: 0 0 0 1px var(--m3-primary);
     }
   }
 
@@ -45,7 +47,7 @@
     width: 100%;
     height: 100%;
     outline: none;
-    color: #dadbe1;
+    color: var(--m3-on-surface);
     cursor: default;
     font-family: inherit;
     text-overflow: ellipsis;
